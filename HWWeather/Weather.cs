@@ -2,8 +2,8 @@
 {
     internal class Weather
     {
-        public falloutEnum fallout;
+        public Fallouts fallout;
         public int temperature;
-        public int windStrength;
+        public bool wind;
     }
 }
