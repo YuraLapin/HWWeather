@@ -4,6 +4,9 @@ namespace HWWeather
     {
         WeatherAdviser adviser;
 
+        private const int LOW_BORDER = -35;
+        private const int HIGH_BORDER = 35;
+
         public MainForm()
         {
             InitializeComponent();
@@ -21,32 +24,37 @@ namespace HWWeather
         {
             var clothesList = new List<Clothes>();
 
-            clothesList.Add(new Clothes("Ничего", 0, 36, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Head, true));
-            clothesList.Add(new Clothes("Кепка", -5, 36, 15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Head, true));
+            clothesList.Add(new Clothes("Кепка", -5, 20, 15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Head, true));
             clothesList.Add(new Clothes("Шапка", -25, 10, -10, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Head, true));
-            clothesList.Add(new Clothes("Шапка ушанка", -36, -10, -25, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Head, true));
+            clothesList.Add(new Clothes("Шапка ушанка", LOW_BORDER - 1, -10, -25, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Head, true));
 
-            clothesList.Add(new Clothes("Футболка", 15, 36, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain}, Slots.Body, true));
-            clothesList.Add(new Clothes("Рубашка", 15, 36, 25, new List<Fallouts>() { Fallouts.No, Fallouts.Rain}, Slots.Body, false));
-            clothesList.Add(new Clothes("Кофта", 5, 20, 15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain}, Slots.Body, true));
-            clothesList.Add(new Clothes("Ветровка", 0, 15, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Body, true));
-            clothesList.Add(new Clothes("Куртка", -20, 0, -10, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Body, true));
-            clothesList.Add(new Clothes("Пуховик", -36, -10, -25, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Body, true));
+            clothesList.Add(new Clothes("Кофта", 5, 20, 15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain}, Slots.OuterBody, true));
+            clothesList.Add(new Clothes("Ветровка", 0, 15, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterBody, true));
+            clothesList.Add(new Clothes("Куртка", -20, 0, -10, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterBody, true));
+            clothesList.Add(new Clothes("Пуховик", LOW_BORDER - 1, -10, -25, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterBody, true));
 
-            clothesList.Add(new Clothes("Шорты", 15, 36, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain}, Slots.Pants, true));
-            clothesList.Add(new Clothes("Брюки", -15, 25, 5, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Pants, true));
-            clothesList.Add(new Clothes("Брюки с подштанниками", -36, -10, -15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Pants, true));
+            clothesList.Add(new Clothes("Футболка", LOW_BORDER - 1, HIGH_BORDER + 1, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.InnerBody, true));
+            clothesList.Add(new Clothes("Рубашка", LOW_BORDER - 1, HIGH_BORDER + 1, 25, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.InnerBody, false));
 
-            clothesList.Add(new Clothes("Ничего", -10, 36, 0, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Gloves, true));
-            clothesList.Add(new Clothes("Перчатки", -20, 5, -10, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Gloves, true));
-            clothesList.Add(new Clothes("Варежки", -36, -10, -20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Gloves, true));
+            clothesList.Add(new Clothes("Шорты", 15, HIGH_BORDER + 1, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain }, Slots.OuterPants, true));
+            clothesList.Add(new Clothes("Брюки", -15, HIGH_BORDER + 1, 5, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterPants, true));
+            clothesList.Add(new Clothes("Брюки с подштанниками", LOW_BORDER - 1, -10, -15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterPants, true));
 
-            clothesList.Add(new Clothes("Сандали", 20, 36, 30, new List<Fallouts>() { Fallouts.No }, Slots.Shoes, true));
-            clothesList.Add(new Clothes("Кросовки", 10, 36, 15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain }, Slots.Shoes, true));
-            clothesList.Add(new Clothes("Теплые кросовки", -10, 15, 5, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Shoes, true));
-            clothesList.Add(new Clothes("Теплые ботинки", -36, 0, -15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Shoes, true));
+            clothesList.Add(new Clothes("Трусы", LOW_BORDER - 1, HIGH_BORDER + 1, 20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.InnerPants, true));
 
-            clothesList.Add(new Clothes("Зонтик", -5, 36, 15, new List<Fallouts>() { Fallouts.Rain }, Slots.Accessory, true));
+            //clothesList.Add(new Clothes("Ничего", -10, HIGH_BORDER + 1, 0, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Gloves, true));
+            clothesList.Add(new Clothes("Перчатки", -20, -5, -10, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Gloves, true));
+            clothesList.Add(new Clothes("Варежки", LOW_BORDER - 1, -10, -20, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.Gloves, true));
+
+            clothesList.Add(new Clothes("Сандали", 20, HIGH_BORDER + 1, 30, new List<Fallouts>() { Fallouts.No }, Slots.OuterShoes, true));
+            clothesList.Add(new Clothes("Кросcовки", 10, HIGH_BORDER + 1, 15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterShoes, true));
+            clothesList.Add(new Clothes("Теплые кросовки", -10, 15, 5, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterShoes, true));
+            clothesList.Add(new Clothes("Теплые ботинки", LOW_BORDER - 1, 0, -15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.OuterShoes, true));
+
+            clothesList.Add(new Clothes("Носки", -10, 22, 15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.InnerShoes, true));
+            clothesList.Add(new Clothes("Теплые носки", LOW_BORDER - 1, 0, -15, new List<Fallouts>() { Fallouts.No, Fallouts.Rain, Fallouts.Snow }, Slots.InnerShoes, true));
+
+            clothesList.Add(new Clothes("Зонтик", -5, HIGH_BORDER + 1, 15, new List<Fallouts>() { Fallouts.Rain }, Slots.Accessory, true));
 
             return clothesList;
         }

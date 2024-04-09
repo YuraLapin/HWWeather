@@ -3,10 +3,13 @@
     enum Slots
     {
         Head,
-        Body,
+        OuterBody,
+        InnerBody,
         Gloves,
-        Pants,
-        Shoes,
+        OuterPants,
+        InnerPants,
+        OuterShoes,
+        InnerShoes,
         Accessory,
     }
 
