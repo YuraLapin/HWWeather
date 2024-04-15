@@ -4,6 +4,7 @@
     {
         Head,
         OuterBody,
+        MiddleBody,
         InnerBody,
         Gloves,
         OuterPants,
